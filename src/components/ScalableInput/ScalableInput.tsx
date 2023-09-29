@@ -1,5 +1,7 @@
-import React, { useState, useRef, useMemo } from 'react'
+import React, { useState } from 'react'
 import cx from 'classnames'
+
+import { useScalableText } from 'components/ScalableText'
 
 import type { ScalableInputProps } from './ScalableInput.types'
 import styles from './ScalableInput.scss'
@@ -11,18 +13,22 @@ function ScalableInput({
   name,
   label,
   placeholder = '',
+  minFontSize = undefined,
   validate = (value) => undefined,
   onKeyDown,
 }: ScalableInputProps): React.ReactNode {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const mockInputRef = useRef<HTMLSpanElement>(null)
-
   const [value, setValue] = useState<string>('')
   const [errorMessage, setErrorMessage] = useState<string>('')
   const [hasPlaceholder, setHasPlaceholder] = useState<boolean>(placeholder !== '')
 
+  const [
+    containerRef,
+    contentRef,
+    scaleValue,
+  ] = useScalableText<HTMLDivElement, HTMLSpanElement>(value, { minFontSize })
+
   const handleFocus = (): void => {
-    mockInputRef.current?.focus()
+    contentRef.current?.focus()
   }
 
   // Handle user entry for the mock input field
@@ -68,24 +74,6 @@ function ScalableInput({
     onKeyDown && onKeyDown(evt)
   }
 
-  // If the input value is wider than the container, scale the content to fit
-  const scaleValue = useMemo(() => {
-    if (!containerRef.current || !mockInputRef.current) return 1
-
-    const containerWidth = containerRef.current.clientWidth
-    const contentWidth = mockInputRef.current.clientWidth
-
-    if (contentWidth > containerWidth) {
-      return containerWidth / contentWidth
-    }
-
-    return 1
-  }, [
-    value,
-    containerRef.current,
-    mockInputRef.current,
-  ])
-
   const mockId = `${id}-mock`
   const errorId = `${id}-errormessage`
   const inputId = id
@@ -98,7 +86,7 @@ function ScalableInput({
       onFocus={handleFocus}
     >
       <span
-        ref={mockInputRef}
+        ref={contentRef}
         contentEditable
         className={cx(styles.mockInputField, {
           [styles.hasPlaceholder]: hasPlaceholder,

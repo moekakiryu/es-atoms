@@ -7,6 +7,7 @@ export interface ScalableInputProps {
 
   placeholder?: string
 
+  minFontSize?: number
   /**
    * This function should accept the new value of the input field and either
    * return a string or undefined.
