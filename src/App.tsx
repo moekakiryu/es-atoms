@@ -42,7 +42,13 @@ const mockupForm = (
   </form>
 )
 
-const pStyle = { marginBottom: 4, paddingBottom: 2, borderBottom: '1px solid white' }
+const pStyle = {
+  marginBottom: 4,
+  paddingBottom: 2,
+  borderBottom: '1px solid #888',
+  fontWeight: 'bold',
+  color: '#888',
+}
 
 function App(): React.ReactNode {
   return (
@@ -53,28 +59,31 @@ function App(): React.ReactNode {
       <div
         style={{
           width: 170,
-          flexShrink: 0,
         }}
       >
-        <p style={pStyle}><strong>Multiline</strong></p>
+        <p style={pStyle}>Normal</p>
+        <ScalableText
+          text={'team_name'}
+        />
+        <p style={pStyle}>Multiline</p>
         <ScalableText
           text={'There\'s a squirrellongername in my pants'}
           wrap
           // minFontSize={16}
         />
 
-        <p style={pStyle}><strong>Shrink (short text)</strong></p>
+        <p style={pStyle}>Shrink (short text)</p>
         <ScalableText
           text={'Completed Levels: 0'}
           minFontSize={16}
         />
 
-        <p style={pStyle}><strong>Shrink (long text)</strong></p>
+        <p style={pStyle}>Shrink (long text)</p>
         <ScalableText
           text={'Completed Levels: 99997'}
         />
 
-        <p style={pStyle}><strong>Shrink (min font size)</strong></p>
+        <p style={pStyle}>Shrink (min font size)</p>
         <ScalableText
           text={'Completed Levels: 99997'}
           minFontSize={20}
@@ -82,7 +91,9 @@ function App(): React.ReactNode {
       </div>
       <div
         style={{
-          // width: 400,
+          background: '#686',
+          flexGrow: 1,
+          margin: 30,
         }}
       >
         Hello, world!

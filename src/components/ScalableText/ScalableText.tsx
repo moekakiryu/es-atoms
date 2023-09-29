@@ -42,6 +42,7 @@ function ScalableText({
     setScaleValue(1)
   }
 
+  // Also resize the element if the window changes size (which could resize the container)
   useEffect(() => {
     const resizeListener = (): void => {
       resizeText()
