@@ -9,6 +9,7 @@ function ScalableText({
   text,
   wrap = false,
   minFontSize = undefined,
+  className = undefined,
 }: ScalableTextProps): React.ReactNode {
   const [
     containerRef, contentRef, scaleValue,
@@ -21,7 +22,7 @@ function ScalableText({
     >
       <span
         ref={contentRef}
-        className={cx(styles.content, {
+        className={cx(styles.content, className, {
           [styles.nowrap]: !wrap,
         })}
         style={{

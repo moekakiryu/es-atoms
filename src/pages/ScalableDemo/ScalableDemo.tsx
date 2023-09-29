@@ -28,28 +28,33 @@ function ScalableDemo(): React.ReactNode {
     <>
       <p className={styles.label}>Normal</p>
       <ScalableText
+        className={styles.resizedText}
         text={'team_name'}
       />
 
       <p className={styles.label}>Multiline</p>
       <ScalableText
+        className={styles.resizedText}
         text={'There\'s a squirrellongername in my pants'}
         wrap
       />
 
       <p className={styles.label}>Shrink (short text)</p>
       <ScalableText
+        className={styles.resizedText}
         text={'Completed Levels: 0'}
         minFontSize={16}
       />
 
       <p className={styles.label}>Shrink (long text)</p>
       <ScalableText
+        className={styles.resizedText}
         text={'Completed Levels: 99997'}
       />
 
       <p className={styles.label}>Shrink (min font size)</p>
       <ScalableText
+        className={styles.resizedText}
         text={'Completed Levels: 99997'}
         minFontSize={20}
       />
