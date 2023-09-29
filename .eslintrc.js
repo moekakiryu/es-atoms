@@ -4,7 +4,7 @@ const mapRulesToTypescript = (rules, {
 } = {}) => {
   const typescriptPrefix = '@typescript-eslint'
   const scopeDirective = {
-    eslintOnly: 'eslint-only',
+    eslintOnly: '@eslint',
   }
   const typescriptRules = {}
 
@@ -35,9 +35,11 @@ const defaultRules = {
     functions: 'always-multiline',
   }],
 
-  'jsx-quotes': ['error', 'prefer-double', 'eslint-only'],
+  'jsx-quotes': ['error', 'prefer-double', '@eslint'],
 
-  'max-len': ['error', 100, 'eslint-only'],
+  'no-console': ['error', '@eslint'],
+
+  'max-len': ['error', 100, '@eslint'],
 
   semi: ['error', 'never'],
 
