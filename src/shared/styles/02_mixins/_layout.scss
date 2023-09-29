@@ -1,0 +1,13 @@
+@use "sass:map";
+
+@mixin rounded(
+    $size
+) {
+    $border-radii: (
+        "md": $border-radius__md,
+        "lg": $border-radius__lg,
+        "circle": 99999px,
+    );
+
+    border-radius: map.get($border-radii, $size);
+}
