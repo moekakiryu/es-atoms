@@ -1,0 +1,14 @@
+.container {
+  position: relative;
+  width: 100%;
+  font-size: 24px;
+}
+
+.content {
+  display: inline-block;
+  transform-origin: left;
+
+  &.nowrap {
+    white-space: nowrap;
+  }
+}
