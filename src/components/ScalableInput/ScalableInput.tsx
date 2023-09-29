@@ -119,7 +119,7 @@ function ScalableInput({
           className={styles.trueInputField}
           id={inputId}
           name={name}
-          value={value}
+          defaultValue={value}
         />
       </label>
     </div>

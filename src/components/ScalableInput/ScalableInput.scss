@@ -7,9 +7,7 @@
 
   width: 100%;
   margin-bottom: $spacing__md;
-  border-bottom: 1px solid $color__grey-40;
-
-  font-size: 24px;
+  border-bottom: .1rem solid $color__grey-40;
   
   &:focus-within {
     border-color: $color__white;
@@ -39,9 +37,8 @@
 .errorMessage {
   position: absolute;
 
-  // left: 0;
   top: 100%;
-  margin-top: $spacing__xs / 2;
+  margin-top: .2rem;
 
   color: #bf6c6c;
   font-size: .8em;
@@ -50,9 +47,9 @@
 .visuallyHidden {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
-  height: 1px;
+  height: .1rem;
   overflow: hidden;
   position: absolute;
   white-space: nowrap;
-  width: 1px;
+  width: .1rem;
 }
