@@ -6,6 +6,7 @@ import styles from './MockContainer.scss'
 
 function MockContainer({
   fillHeight,
+  flex,
   children,
 }: MockContainerProps): React.ReactNode {
   return (
@@ -14,7 +15,9 @@ function MockContainer({
         [styles.fill]: fillHeight,
       })}
     >
-      <div className={styles.content}>
+      <div className={cx(styles.content, {
+        [styles.flex]: flex,
+      })}>
         {children}
       </div>
     </div>

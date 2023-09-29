@@ -19,22 +19,37 @@ const handleSubit = (evt: React.FormEvent<HTMLFormElement>): void => {
   console.log(Object.fromEntries(data.entries()))
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const mockupForm = (
+  <form
+    onSubmit={handleSubit}
+  >
+    <ScalableInput
+      id="teamName"
+      label="teamName"
+      name="teamName"
+      placeholder="Enter team name"
+      validate={validateTeamName}
+    />
+    <button>Submit</button>
+  </form>
+)
+
 function App(): React.ReactNode {
   return (
-    <MockContainer fillHeight>
-      <form
-        onSubmit={handleSubit}
-      >
-        <ScalableInput
-          id="teamName"
-          label="teamName"
-          name="teamName"
-          placeholder="Enter team name"
-          validate={validateTeamName}
-        />
-        <button>Submit</button>
-      </form>
+    <MockContainer
+      fillHeight
+      flex
+    >
       <div>
+        Hello, world!
+      </div>
+      <div
+        style={{
+          width: 600,
+          flexShrink: 0,
+        }}
+      >
         Hello, world!
       </div>
     </MockContainer>
