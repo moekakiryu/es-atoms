@@ -1,0 +1,10 @@
+@import 'shared/styles';
+
+.label {
+  margin-bottom: $spacing__xs;
+  padding-bottom: $spacing__xs;
+  border-bottom: 1px solid $color__grey-50;
+
+  font-weight: bold;
+  color: $color__grey-50;
+}
