@@ -2,8 +2,8 @@ import React from 'react'
 import cx from 'classnames'
 
 import type { ScalableTextProps } from './ScalableText.types'
+import { useScalableText } from './ScalableText.hooks'
 import styles from './ScalableText.scss'
-import { useScalableText } from './hooks'
 
 function ScalableText({
   text,
@@ -11,9 +11,7 @@ function ScalableText({
   minFontSize = undefined,
 }: ScalableTextProps): React.ReactNode {
   const [
-    containerRef,
-    contentRef,
-    scaleValue,
+    containerRef, contentRef, scaleValue,
   ] = useScalableText<HTMLDivElement, HTMLSpanElement>(text, { minFontSize })
 
   return (
