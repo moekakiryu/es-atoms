@@ -6,14 +6,31 @@ const mapRulesToTypescript = (rules, {
   const typescriptRules = {}
 
   Object.entries(rules).forEach(([rule, value]) => {
-    typescriptRules[rule] = allowJs ? value : 'off'
-    typescriptRules[`${typescriptPrefix}/${rule}`] = allowTs ? value : 'off'
+    const isEslintOnly = Array.isArray(value) && (value[0] === 'eslint-only')
+    const filteredValue = isEslintOnly ? value.slice(1) : value
+
+    // If the rule only exists within one scope, always include that scope
+    const includeEslintRule = allowJs || isEslintOnly
+    const includeTsPrefix = allowTs && !isEslintOnly
+
+    typescriptRules[rule] = includeEslintRule ? filteredValue : 'off'
+    typescriptRules[`${typescriptPrefix}/${rule}`] = includeTsPrefix ? filteredValue : 'off'
   })
 
   return typescriptRules
 }
 
 const defaultRules = {
+  'comma-dangle': ['error', {
+    arrays: 'always-multiline',
+    objects: 'always-multiline',
+    imports: 'always-multiline',
+    exports: 'always-multiline',
+    functions: 'always-multiline',
+  }],
+
+  'jsx-quotes': ['eslint-only', 'error', 'prefer-double'],
+
   semi: ['error', 'never'],
 
   'space-before-function-paren': ['error', {
@@ -22,18 +39,11 @@ const defaultRules = {
     asyncArrow: 'always',
   }],
 
+  // Only allow safe implicit null checks
   'strict-boolean-expressions': ['error', {
     allowString: false,
     allowNumber: false,
     allowNullableObject: true,
-  }],
-
-  'comma-dangle': ['error', {
-    arrays: 'always-multiline',
-    objects: 'always-multiline',
-    imports: 'always-multiline',
-    exports: 'always-multiline',
-    functions: 'always-multiline',
   }],
 }
 
