@@ -1,0 +1,16 @@
+@import 'shared/styles';
+
+.mockContainer {
+  padding: $spacing__md;
+  background-color: $color__grey-80;
+  color: $color__grey-10;
+  
+  &.fill {
+    min-height: 100vh;
+  }
+}
+
+.content {
+  margin: 0 auto;
+  max-width: 800px;
+}
