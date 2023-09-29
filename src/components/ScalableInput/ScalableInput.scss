@@ -1,0 +1,58 @@
+@import 'shared/styles';
+
+.scalableInput {
+  display: flex;
+  position: relative;
+  overflow: visible;
+
+  width: 100%;
+  margin-bottom: $spacing__md;
+  border-bottom: 1px solid $color__grey-40;
+
+  font-size: 24px;
+  
+  &:focus-within {
+    border-color: $color__white;
+  }
+}
+
+.mockInputField {
+  display: inline-block;
+
+  min-width: auto;
+  padding: $spacing__sm $spacing__sm $spacing__xs $spacing__sm;
+  
+  white-space: nowrap;
+  transform-origin: left bottom;
+  
+  &:focus {
+    outline: none;
+  }
+
+  &.hasPlaceholder::before {
+    content: attr(data-placeholder);
+    position: absolute;
+    color: $color__grey-40;
+  }
+}
+
+.errorMessage {
+  position: absolute;
+
+  // left: 0;
+  top: 100%;
+  margin-top: $spacing__xs / 2;
+
+  color: #bf6c6c;
+  font-size: .8em;
+}
+
+.visuallyHidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
