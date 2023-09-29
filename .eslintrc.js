@@ -3,11 +3,17 @@ const mapRulesToTypescript = (rules, {
   allowJs = true,
 } = {}) => {
   const typescriptPrefix = '@typescript-eslint'
+  const scopeDirective = {
+    eslintOnly: 'eslint-only',
+  }
   const typescriptRules = {}
 
   Object.entries(rules).forEach(([rule, value]) => {
-    const isEslintOnly = Array.isArray(value) && (value[0] === 'eslint-only')
-    const filteredValue = isEslintOnly ? value.slice(1) : value
+    const isEslintOnly = (
+      Array.isArray(value) &&
+      (value.slice(-1)[0] === scopeDirective.eslintOnly)
+    )
+    const filteredValue = isEslintOnly ? value.slice(0, -1) : value
 
     // If the rule only exists within one scope, always include that scope
     const includeEslintRule = allowJs || isEslintOnly
@@ -29,7 +35,9 @@ const defaultRules = {
     functions: 'always-multiline',
   }],
 
-  'jsx-quotes': ['eslint-only', 'error', 'prefer-double'],
+  'jsx-quotes': ['error', 'prefer-double', 'eslint-only'],
+
+  'max-len': ['error', 100, 'eslint-only'],
 
   semi: ['error', 'never'],
 
