@@ -93,7 +93,6 @@ function ScalableDemo(): React.ReactNode {
       <div
         style={{
           width: 200,
-          background: '#686',
           flexGrow: 1,
           margin: 30,
         }}
