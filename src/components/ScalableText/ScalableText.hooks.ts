@@ -1,18 +1,6 @@
-import type React from 'react'
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 
-interface useScalableTextOptions {
-  minFontSize?: number
-}
-
-type scalableTextType = <containerType extends HTMLElement, contentType extends HTMLElement>(
-  text: string,
-  options?: useScalableTextOptions
-) => [
-  React.RefObject<containerType>,
-  React.RefObject<contentType>,
-  number
-]
+import type { scalableTextType, useScalableTextOptions } from './ScalableText.types'
 
 // eslint-disable-next-line max-len
 export const useScalableText: scalableTextType = <containerType extends HTMLElement, contentType extends HTMLElement>(
